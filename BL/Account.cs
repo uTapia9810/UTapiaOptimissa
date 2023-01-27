@@ -62,7 +62,7 @@ namespace BL
                             account.account = obj.Account1;
                             account.balance = obj.Balance.Value;
                             account.owner = obj.Owner;
-                            account.createdAt = obj.CreatedAt.ToString();
+                            account.createdAt = obj.CreatedAt.Value.ToString("dd-MM-yyyy HH:mm:ss.fffff");
 
                             result.Objects.Add(account);
 
@@ -106,7 +106,7 @@ namespace BL
                             account.account = obj.Account1;
                             account.balance = obj.Balance.Value;
                             account.owner = obj.Owner;
-                            account.createdAt = obj.CreatedAt.ToString();
+                            account.createdAt = obj.CreatedAt.Value.ToString("dd-MM-yyyy HH:mm:ss.fffff");
 
                             result.Objects.Add(account);
 
@@ -152,7 +152,7 @@ namespace BL
                             balance.account = obj.Account1;
                             balance.balance = obj.Balance.Value;
                             balance.owner = obj.Owner;
-                            balance.createdAt = obj.CreatedAt.ToString();
+                            balance.createdAt = obj.CreatedAt.Value.ToString("dd-MM-yyyy HH:mm:ss.fffff");
 
                             result.Objects.Add(balance);
 

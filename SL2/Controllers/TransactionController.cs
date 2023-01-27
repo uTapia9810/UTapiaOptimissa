@@ -19,7 +19,7 @@ namespace SL2.Controllers
             }
             else
             {
-                return NotFound();
+                return BadRequest();
             }
         }
 
@@ -68,7 +68,7 @@ namespace SL2.Controllers
             ML.Transaction transaction = new ML.Transaction();
             ML.Result result = new ML.Result();
 
-            result = BL.Transaction.FromAccount(toaccount);  //se ingresa al metodo
+            result = BL.Transaction.ToAccount(toaccount);  //se ingresa al metodo
 
             if (result.Correct)
             {

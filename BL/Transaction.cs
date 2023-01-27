@@ -18,7 +18,7 @@ namespace BL
                 {
                     var query = context.Database.ExecuteSqlRaw($"Trans '{transaction.FromAccount}', '{transaction.ToAccount}', { transaction.Amount}");
 
-                    if (query > 0) //se valida que tenga campos que agregar
+                    if (query > 1) //se valida que tenga campos que agregar
                     {
                         //se valida que es correcto
                         result.Correct = true;
@@ -56,10 +56,11 @@ namespace BL
                             ML.Transaction transaction = new ML.Transaction();
 
                             //se realiza un boxing para guardar los datos
+                            transaction.IdTransaction = obj.Idtransaction;
                             transaction.FromAccount = obj.Fromaccount;
                             transaction.ToAccount = obj.Toaccount;
                             transaction.Amount = obj.Amount.Value;
-                            transaction.SentAt = obj.SentAt.ToString(); ;
+                            transaction.SentAt = obj.SentAt.Value.ToString("dd-MM-yyyy HH:mm:ss.fffff");
 
                             result.Objects.Add(transaction);
 
@@ -103,7 +104,7 @@ namespace BL
                             transaction.FromAccount = obj.Fromaccount;
                             transaction.ToAccount = obj.Toaccount;
                             transaction.Amount = obj.Amount.Value;
-                            transaction.SentAt = obj.SentAt.ToString();
+                            transaction.SentAt = obj.SentAt.Value.ToString("dd-MM-yyyy HH:mm:ss.fffff");
 
                             result.Objects.Add(transaction);
 
@@ -135,7 +136,7 @@ namespace BL
             {
                 using (DL.UtapiaOptimissaContext context = new DL.UtapiaOptimissaContext())   //Se realiza la conexion al modelo de DB
                 {
-                    var quer = context.Transacctions.FromSqlRaw($"TransFromAccount {toaccount}").AsEnumerable().ToList().AsEnumerable();
+                    var quer = context.Transacctions.FromSqlRaw($"TransToAccount {toaccount}").AsEnumerable().ToList().AsEnumerable();
                     result.Objects = new List<object>();
 
                     if (quer != null)   //se valida que tenga campos que agregar
@@ -145,10 +146,11 @@ namespace BL
                             ML.Transaction transaction = new ML.Transaction();
 
                             //se realiza un boxing para guardar los datos
+                            transaction.IdTransaction = obj.Idtransaction;
                             transaction.FromAccount = obj.Fromaccount;
                             transaction.ToAccount = obj.Toaccount;
                             transaction.Amount = obj.Amount.Value;
-                            transaction.SentAt = obj.SentAt.ToString();
+                            transaction.SentAt = obj.SentAt.Value.ToString("dd-MM-yyyy HH:mm:ss.fffff");
 
                             result.Objects.Add(transaction);
 
